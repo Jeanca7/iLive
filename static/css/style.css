@@ -1,0 +1,17 @@
+
+
+.align-btn{
+   float: right;  /*move item to the right*/
+}
+
+.img_size{
+    width:450px;height:300px
+}
+
+#email_repeat{
+    color: red;
+}
+
+#container_register{
+    margin-top: 50px;
+}

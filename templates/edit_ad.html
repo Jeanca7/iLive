@@ -1,0 +1,192 @@
+{% extends 'layout.html' %} 
+{% block content %}
+<h3>Add property</h3>
+
+<form action="{{url_for('edit_ad', ad_id=the_ad._id)}}" method="POST" enctype='multipart/form-data'>
+    <div class="form-row">
+    <div class="form-group col-md-4">
+      <label for="inputState">Category</label>
+      <select id="input_category" class="form-control" name="category_name">
+        <option selected>Choose...</option>
+        <option {%  if the_ad.category_name == "Residential" %} selected {% endif %}>Residential</option>
+        <option {%  if the_ad.category_name == "Comercial" %} selected {% endif %}>Comercial</option>
+        <option {%  if the_ad.category_name == "Sharing" %} selected {% endif %}>Sharing</option>
+        <option {%  if the_ad.category_name == "Holiday Homes" %} selected {% endif %}>Holiday Homes</option>
+      </select>
+    </div>
+    
+    <div class="form-group col-md-4">
+      <label for="inputState">Property Type</label>
+      <select id="input_propertytype" class="form-control" name="property_type">
+        <option selected>Choose...</option>
+        <option {% if the_ad.property_type == "House" %} selected {% endif %}>House</option>
+        <option {% if the_ad.property_type == "Apartment" %} selected {% endif %}>Apartment</option>
+        <option {% if the_ad.property_type == "Site" %} selected {% endif %}>Site</option>
+      </select>
+    </div>
+    </div>
+    
+    
+    
+    <div class="form-row">
+    <div class="form-group col-md-4">
+      <label for="inputState">Number of bedrooms</label>
+      <select id="input_numberbedrooms" class="form-control" name="number_bedrooms">
+        <option selected>Choose...</option>
+        <option {% if the_ad.number_bedrooms == "1" %} selected {% endif %}>1</option>
+        <option {% if the_ad.number_bedrooms == "2" %} selected {% endif %}>2</option>
+        <option {% if the_ad.number_bedrooms == "3" %} selected {% endif %}>3</option>
+        <option {% if the_ad.number_bedrooms == "4" %} selected {% endif %}>4</option>
+        <option {% if the_ad.number_bedrooms == "5" %} selected {% endif %}>5</option>
+        <option {% if the_ad.number_bedrooms == "6" %} selected {% endif %}>6</option>
+        <option {% if the_ad.number_bedrooms == "7" %} selected {% endif %}>7</option>
+      </select>
+    </div>
+    
+    <div class="form-group col-md-4">
+      <label for="inputState">Number of bathrooms</label>
+      <select id="input_numberbathrooms" class="form-control" name="number_bathrooms">
+        <option selected>Choose...</option>
+        <option {% if the_ad.number_bathrooms == "1" %} selected {% endif %}>1</option>
+        <option {% if the_ad.number_bathrooms == "2" %} selected {% endif %}>2</option>
+        <option {% if the_ad.number_bathrooms == "3" %} selected {% endif %}>3</option>
+        <option {% if the_ad.number_bathrooms == "4" %} selected {% endif %}>4</option>
+        <option {% if the_ad.number_bathrooms == "5" %} selected {% endif %}>5</option>
+        <option {% if the_ad.number_bathrooms == "6" %} selected {% endif %}>6</option>
+        <option {% if the_ad.number_bathrooms == "7" %} selected {% endif %}>7</option>
+      </select>
+    </div>
+    </div>
+    
+  
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" id="gridCheck" name="sell" {% if the_ad.sell %} checked {% endif %}>
+      <span><label class="form-check-label" for="gridCheck1">Sell</label></span>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" id="gridCheck" name="rent" {% if the_ad.rent %} checked {% endif %}>
+      <span><label class="form-check-label" for="gridCheck1">Rent</label></span>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" id="gridCheck" name="share" {% if the_ad.share %} checked {% endif %}>
+      <span><label class="form-check-label" for="gridCheck1">Share</label></span>
+    </div>
+  
+  
+  <div class="form-group">
+    <label for="inputAddress">Address</label>
+    <input type="text" class="form-control" {% if the_ad  %} value="{{ the_ad.address1 }}" {% endif %} id="inputAddress" placeholder="1234 Main St" name="address1">
+  </div>
+ 
+  
+  
+  <div class="form-group">
+    <label for="inputAddress2">Address 2</label>
+    <input type="text" class="form-control" {% if the_add %} value="{{ the_ad.address2 }}" {% endif %} id="inputAddress2" placeholder="Apartment, studio, or floor" name="address2">
+  </div>
+  
+  
+  
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="inputCity">City/Town</label>
+      <input type="text" class="form-control" id="inputCity" name="town_name" {% if the_ad %} value="{{the_ad.town_name}}" {% endif %}>
+    </div>
+    
+    <div class="form-group col-md-4">
+      <label for="inputState">County</label>
+      <select id="input_county" class="form-control" name="county">
+        <option selected>Choose...</option>
+        <option {% if the_ad.county == "Antrim" %} selected {% endif %}>Antrim</option>-->
+        <option {% if the_ad.county == "Armagh" %} selected {% endif %}>Armagh</option>
+        <option {% if the_ad.county == "Carlow" %} selected {% endif %}>Carlow</option>
+        <option {% if the_ad.county == "Cavan" %} selected {% endif %}>Cavan</option>
+        <option {% if the_ad.county == "Clare" %} selected {% endif %}>Clare</option>
+        <option {% if the_ad.county == "Cork" %} selected {% endif %}>Cork</option>
+        <option {% if the_ad.county == "Derry" %} selected {% endif %}>Derry</option>
+        <option {% if the_ad.county == "Donegal" %} selected {% endif %}>Donegal</option>
+        <option {% if the_ad.county == "Down" %} selected {% endif %}>Down</option>
+        <option {% if the_ad.county == "Dublin" %} selected {% endif %}>Dublin</option>
+        <option {% if the_ad.county == "Fermanagh" %} selected {% endif %}>Fermanagh</option>
+        <option {% if the_ad.county == "Galway" %} selected {% endif %}>Galway</option>
+        <option {% if the_ad.county == "Kerry" %} selected {% endif %}>Kerry</option>
+        <option {% if the_ad.county == "Kildare" %} selected {% endif %}>Kildare</option>
+        <option {% if the_ad.county == "Kilkenny" %} selected {% endif %}>Kilkenny</option>
+        <option {% if the_ad.county == "Laois" %} selected {% endif %}>Laois</option>
+        <option {% if the_ad.county == "Leitrim" %} selected {% endif %}>Leitrim</option>
+        <option {% if the_ad.county == "Limerick" %} selected {% endif %}>Limerick</option>
+        <option {% if the_ad.county == "Longford" %} selected {% endif %}>Longford</option>
+        <option {% if the_ad.county == "Louth" %} selected {% endif %}>Louth</option>
+        <option {% if the_ad.county == "Mayo" %} selected {% endif %}>Mayo</option>
+        <option {% if the_ad.county == "Meath" %} selected {% endif %}>Meath</option>
+        <option {% if the_ad.county == "Monaghan" %} selected {% endif %}>Monaghan</option>
+        <option {% if the_ad.county == "Offaly" %} selected {% endif %}>Offaly</option>
+        <option {% if the_ad.county == "Roscommon" %} selected {% endif %}>Roscommon</option>
+        <option {% if the_ad.county == "Sligo" %} selected {% endif %}>Sligo</option>
+        <option {% if the_ad.county == "Tipperary" %} selected {% endif %}>Tipperary</option>
+        <option {% if the_ad.county == "Tyrone" %} selected {% endif %}>Tyrone</option>
+        <option {% if the_ad.county == "Waterford" %} selected {% endif %}>Waterford</option>
+        <option {% if the_ad.county == "Westmeath" %} selected {% endif %}>Westmeath</option>
+        <option {% if the_ad.county == "Wexford" %} selected {% endif %}>Wexford</option>
+        <option {% if the_ad.county == "Wicklow" %} selected {% endif %}>Wicklow</option>
+      </select>
+    </div>
+    <div class="form-group col-md-2">
+      <label for="inputZip">Eircode</label>
+      <input type="text" class="form-control" id="inputZip" name="Eircode" {% if the_ad %} value="{{the_ad.Eircode}}" {% endif %}>
+    </div>
+  </div>
+  
+  
+  <div class="form-row">
+  <div class="form-group col-md-4">
+      <label for="inputState">Facilities of the property</label>
+      <select id="input_propertyfacilities" class="form-control" name="property_facilities">
+        <option selected>Choose...</option>
+        <option value="Gas fired central heating" {% if the_ad.property_facilities == "Gas fired central heating" %} selected {% endif %}>Gas fired central heating</option>
+        <option value="Parking" {% if the_ad.property_facilities == "Parking" %} selected {% endif %}>Parking</option>
+        <option value="Alarm" {% if the_ad.property_facilities == "Alarm" %} selected {% endif %}>Alarm</option>
+        <option value="Oil fired central heating" {% if the_ad.property_facilities == "Oil fired central heating" %} selected {% endif %}>Oil fired central heating</option>
+        <option value="Wired for cable television" {% if the_ad.property_facilities == "Wired for cable television" %} selected {% endif %}>Wired for cable television</option>
+        <option value="Wheelchair access" {% if the_ad.property_facilities == "Wheelchair access" %} selected {% endif %}>Wheelchair access</option>
+      </select>
+    </div>
+    
+    <div class="form-group col-md-4">
+      <label for="inputState">Energy Performance</label>
+      <select id="input_energyperformance" class="form-control" name="energy_performance">
+        <option selected>Choose...</option>
+        <option {% if the_ad.energy_performance == "A" %} selected {% endif %}>A</option>
+        <option {% if the_ad.energy_performance == "B" %} selected {% endif %}>B</option>
+        <option {% if the_ad.energy_performance == "C" %} selected {% endif %}>C</option>
+        <option {% if the_ad.energy_performance == "D" %} selected {% endif %}>D</option>
+        <option {% if the_ad.energy_performance == "E" %} selected {% endif %}>E</option>
+        <option {% if the_ad.energy_performance == "F" %} selected {% endif %}>F</option>
+        <option {% if the_ad.energy_performance == "G" %} selected {% endif %}>G</option>
+      </select>
+    </div>
+    </div>
+    
+    
+    <div class="form-group">
+    <label for="exampleFormControlTextarea1">Description of the property</label>
+    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="property_description" {% if the_ad %} value="{{the_ad.property_description}}" {% endif %}></textarea>
+  </div>
+  
+  <div class="form-group">
+      <label for="exampleFormControlInput1">Price of the property</label>
+  <input class="form-control" type="text" placeholder="Enter price of the property" name="property_price" {% if the_ad %} value="{{the_ad.property_price}}" {% endif %}> 
+  </div>
+  
+              
+  <div class="form-group">
+    <label for="exampleFormControlFile1">Upload a picture of the property</label>
+    <input type="file" class="form-control-file" id="property_image" name="image">
+  </div>
+
+
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+
+{% endblock %}

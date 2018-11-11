@@ -1,0 +1,202 @@
+{% extends 'layout.html' %} 
+{% block content %}
+<h3>Add property</h3>
+
+<form action="{{url_for('add_property')}}" method="POST" enctype='multipart/form-data'>
+    <div class="form-row">
+    <div class="form-group col-md-4">
+      <label for="inputState">Category</label>
+      <select id="input_category" class="form-control" name="category_name">
+        <option selected>Choose...</option>
+        <option>Residential</option>
+        <option>Comercial</option>
+        <option>Sharing</option>
+        <option>Holiday Homes</option>
+      </select>
+    </div>
+    
+    <div class="form-group col-md-4">
+      <label for="inputState">Property Type</label>
+      <select id="input_propertytype" class="form-control" name="property_type">
+        <option selected>Choose...</option>
+        <option>House</option>
+        <option>Apartment</option>
+        <option>Site</option>
+      </select>
+    </div>
+    </div>
+    
+    
+    
+    <div class="form-row">
+    <div class="form-group col-md-4">
+      <label for="inputState">Number of bedrooms</label>
+      <select id="input_numberbedrooms" class="form-control" name="number_bedrooms">
+        <option selected>Choose...</option>
+        <option>1</option>
+        <option>2</option>
+        <option>3</option>
+        <option>4</option>
+        <option>5</option>
+        <option>6</option>
+        <option>7</option>
+      </select>
+    </div>
+    
+    <div class="form-group col-md-4">
+      <label for="inputState">Number of bathrooms</label>
+      <select id="input_numberbathrooms" class="form-control" name="number_bathrooms">
+        <option selected>Choose...</option>
+        <option>1</option>
+        <option>2</option>
+        <option>3</option>
+        <option>4</option>
+        <option>5</option>
+        <option>6</option>
+        <option>7</option>
+      </select>
+    </div>
+    </div>
+    
+  
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" id="gridCheck" name="sell">
+      <span><label class="form-check-label" for="gridCheck1">Sell</label></span>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" id="gridCheck" name="rent">
+      <span><label class="form-check-label" for="gridCheck1">Rent</label></span>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" id="gridCheck" name="share">
+      <span><label class="form-check-label" for="gridCheck1">Share</label></span>
+    </div>
+  
+  
+  <div class="form-group">
+    <label for="inputAddress">Address</label>
+    <input type="text" class="form-control" id="inputAddress1" placeholder="1234 Main St" name="address1">
+  </div>
+ 
+  
+  
+  <div class="form-group">
+    <label for="inputAddress2">Address 2</label>
+    <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor" name="address2">
+  </div>
+  
+  
+  
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="inputCity">City/Town</label>
+      <input type="text" class="form-control" id="inputCity" name="town_name">
+    </div>
+    
+    <div class="form-group col-md-4">
+      <label for="inputState">County</label>
+      <select id="input_county" class="form-control" name="county">
+        <option selected>Choose...</option>
+        <option>Antrim</option>
+        <option>Armagh</option>
+        <option>Carlow</option>
+        <option>Cavan</option>
+        <option>Clare</option>
+        <option>Cork</option>
+        <option>Derry</option>
+        <option>Donegal</option>
+        <option>Down</option>
+        <option>Dublin</option>
+        <option>Fermanagh</option>
+        <option>Galway</option>
+        <option>Kerry</option>
+        <option>Kildare</option>
+        <option>Kilkenny</option>
+        <option>Laois</option>
+        <option>Leitrim</option>
+        <option>Limerick</option>
+        <option>Longford</option>
+        <option>Louth</option>
+        <option>Mayo</option>
+        <option>Meath</option>
+        <option>Monaghan</option>
+        <option>Offaly</option>
+        <option>Roscommon</option>
+        <option>Sligo</option>
+        <option>Tipperary</option>
+        <option>Tyrone</option>
+        <option>Waterford</option>
+        <option>Westmeath</option>
+        <option>Wexford</option>
+        <option>Wicklow</option>
+      </select>
+    </div>
+    <div class="form-group col-md-2">
+      <label for="inputZip">Eircode</label>
+      <input type="text" class="form-control" id="inputZip" name="Eircode">
+    </div>
+  </div>
+  
+  
+  <div class="form-row">
+  <div class="form-group col-md-4">
+      <label for="inputState">Facilities of the property</label>
+      <select id="input_propertyfacilities" class="form-control" name="property_facilities">
+        <option selected>Choose...</option>
+        <option value="Gas fired central heating">Gas fired central heating</option>
+        <option value="Parking">Parking</option>
+        <option value="Alarm">Alarm</option>
+        <option value="Oil fired central heating">Oil fired central heating</option>
+        <option value="Wired for cable television">Wired for cable television</option>
+        <option value="Wheelchair access">Wheelchair access</option>
+      </select>
+    </div>
+    
+    <div class="form-group col-md-4">
+      <label for="inputState">Energy Performance</label>
+      <select id="input_energyperformance" class="form-control" name="energy_performance">
+        <option selected>Choose...</option>
+        <option>A</option>
+        <option>B</option>
+        <option>C</option>
+        <option>D</option>
+        <option>E</option>
+        <option>F</option>
+        <option>G</option>
+      </select>
+    </div>
+    </div>
+    
+    
+    <div class="form-group">
+    <label for="exampleFormControlTextarea1">Description of the property</label>
+    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="property_description"></textarea>
+  </div>
+  
+  
+  <div class="form-row">
+    <div class="form-group col-md-6">
+  <label for="exampleFormControlInput1">Price of the property</label>
+  <div class="input-group mb-3">
+    
+  <div class="input-group-prepend">
+    <span class="input-group-text">€</span>
+  </div>
+  <input type="text" class="form-control" aria-label="Euro amount (with dot and two decimal places)" name="property_price" placeholder="Enter price of the property">
+</div>
+</div>
+</div>
+  
+  
+              
+  <div class="form-group">
+    <label for="exampleFormControlFile1">Upload a picture of the property</label>
+    <input type="file" class="form-control-file" id="property_image" name="image">
+  </div>
+
+
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+
+{% endblock %}
