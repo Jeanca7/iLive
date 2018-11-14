@@ -1,12 +1,12 @@
-from flask import Flask, render_template, request, redirect, url_for, session
+from flask import Flask, render_template, request, redirect, url_for, session, flash
 from flask_bcrypt import Bcrypt
 import os
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 import base64
 from base64 import b64encode
-from flask_login import UserMixin
-from forms import RegistrationForm   #from forms.py import the RegistrationForm function 
+from flask_login import UserMixin, login_user, logout_user
+from forms import RegistrationForm, LoginForm   #from forms.py import the RegistrationForm function 
 
 app = Flask(__name__)
 bcrypt = Bcrypt(app)
@@ -39,34 +39,40 @@ def filter_ad():
         if type=="buy":
             ads=mongo.db.ads.find({"sell": True})
             return render_template("properties.html", ads=ads)
-        
-        if type=="sell":
-            return render_template("add_property.html")
-            
-            
+
+@app.route("/my_ads")
+def my_ads():
+    ads = mongo.db.ads.find()
+    return render_template("my_ads.html", ads=ads)
 
 
 @app.route("/login", methods=["POST", "GET"])
 def login():
     if request.method == "POST": 
         users = mongo.db.users  #our collection
-        login_user = users.find_one({"username": request.form["username"]})  #get the key-value pair in the document(dictionary) created.
+        login_user = users.find_one({"username": request.form["email"]})  #get the key-value pair in the document(dictionary) created.
         if login_user:
-            if bcrypt.check_password_hash(login_user["password"], request.form["pass"]):  #check password from login and from registration
+            if bcrypt.check_password_hash(login_user["password"], request.form["password"]):  #check password from login and from registration
                 print("success")
-                session["username"] = request.form["username"]
+                session["username"] = request.form["email"]  #I create my session 
                 return redirect(url_for("properties"))                    #will change this for properties  
                     
         return "invalid username/password combination"
-    return render_template("login.html")
+    form=LoginForm()
+    return render_template("login.html", form=form)
 
+
+@app.route("/logout")
+def logout():
+    del session['username']
+    return redirect(url_for('properties'))
 
 
 @app.route("/register", methods=["GET", "POST"])
 def register():
     if request.method == "POST":
         users = mongo.db.users       #our collection
-        existing_user = users.find_one({"username": request.form["username"]})
+        existing_user = users.find_one({"username": request.form["email"]})
         
         if existing_user is None:
             hashpass = bcrypt.generate_password_hash(request.form["password"]).decode('utf-8')  #generate password  
@@ -136,7 +142,8 @@ def edit_ad(ad_id):
         user = mongo.db.users.find_one({"username": session["username"]}) #I have "username" stored in session so I use it to find that specific "username" from my users collection database. By finding the "username" I get its whole information and I assign it to the user variable that I just created.
         form_values["owner"] = {
             "email": user["username"],
-            "phone_number": user["phone_number"]
+            "phone_number": user["phone_number"],
+            "name": user["name"]
         }
         
         mongo.db.ads.update({"_id":ObjectId(ad_id)}, form_values) #I target the ad_id and update it with the form_values

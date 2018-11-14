@@ -17,11 +17,11 @@
 
  
  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="{{url_for('properties')}}">iLive</a>
+  
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-
+ <a class="navbar-brand" href="{{url_for('properties')}}">iLive</a>
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
@@ -39,14 +39,32 @@
         <a class="nav-link" href="{{url_for('filter_ad')}}?type=share">Share</a>
       </li>
       
-      <li class="nav-item">
-        <a class="nav-link" href="{{url_for('filter_ad')}}?type=sell">Advertise</a>  <!--add property but needs to conform if the user exits first-->
-      </li>
       
+       <li class="nav-item">
+        {% if session.username %}  
+        <a class="nav-link" href="{{url_for('add_property')}}">Advertise</a>  <!--add property but needs to conform if the user exits first-->
+      {% else %}
+      <a class="nav-link" href="{{url_for('login')}}">Advertise</a>
+      {% endif %}
+      </li>
       </ul>
+     
       
       
       <ul class="navbar-nav ml-auto">
+      {% if session.username %}
+       <li class="nav-item">
+        <span class="navbar-text">{{session.username}}</span>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{{url_for('logout')}}">Log out</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{{url_for('my_ads')}}">My ads</a>
+      </li>
+     
+      {% else %}
+      
       <li class="nav-item">
         <a class="nav-link" id="login_id" href="{{url_for('login')}}">Login</a>
       </li>
@@ -54,8 +72,8 @@
       <li class="nav-item">
         <a class="nav-link" id="register_id" href="{{url_for('register')}}">Register</a>  
       </li>
-      
-    
+      {% endif %}
+  
     <form class="form-inline my-2 my-lg-0">
       <input class="form-control mr-sm-2 text-align-right" type="search" placeholder="Search" aria-label="Search">
       <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>

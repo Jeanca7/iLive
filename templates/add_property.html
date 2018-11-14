@@ -5,7 +5,7 @@
 <form action="{{url_for('add_property')}}" method="POST" enctype='multipart/form-data'>
     <div class="form-row">
     <div class="form-group col-md-4">
-      <label for="inputState">Category</label>
+      <label for="input_category">Category</label>
       <select id="input_category" class="form-control" name="category_name">
         <option selected>Choose...</option>
         <option>Residential</option>
@@ -16,7 +16,7 @@
     </div>
     
     <div class="form-group col-md-4">
-      <label for="inputState">Property Type</label>
+      <label for="input_propertytype">Property Type</label>
       <select id="input_propertytype" class="form-control" name="property_type">
         <option selected>Choose...</option>
         <option>House</option>
@@ -30,7 +30,7 @@
     
     <div class="form-row">
     <div class="form-group col-md-4">
-      <label for="inputState">Number of bedrooms</label>
+      <label for="input_numberbedrooms">Number of bedrooms</label>
       <select id="input_numberbedrooms" class="form-control" name="number_bedrooms">
         <option selected>Choose...</option>
         <option>1</option>
@@ -44,7 +44,7 @@
     </div>
     
     <div class="form-group col-md-4">
-      <label for="inputState">Number of bathrooms</label>
+      <label for="input_numberbathrooms">Number of bathrooms</label>
       <select id="input_numberbathrooms" class="form-control" name="number_bathrooms">
         <option selected>Choose...</option>
         <option>1</option>
@@ -58,23 +58,24 @@
     </div>
     </div>
     
-  
+  <div class="form-group">
     <div class="form-check">
       <input class="form-check-input" type="checkbox" id="gridCheck" name="sell">
-      <span><label class="form-check-label" for="gridCheck1">Sell</label></span>
+      <span><label class="form-check-label" for="gridCheck">Sell</label></span>
     </div>
     <div class="form-check">
       <input class="form-check-input" type="checkbox" id="gridCheck" name="rent">
-      <span><label class="form-check-label" for="gridCheck1">Rent</label></span>
+      <span><label class="form-check-label" for="gridCheck">Rent</label></span>
     </div>
     <div class="form-check">
       <input class="form-check-input" type="checkbox" id="gridCheck" name="share">
-      <span><label class="form-check-label" for="gridCheck1">Share</label></span>
+      <span><label class="form-check-label" for="gridCheck">Share</label></span>
     </div>
-  
+    </div>
+     
   
   <div class="form-group">
-    <label for="inputAddress">Address</label>
+    <label for="inputAddress1">Address</label>
     <input type="text" class="form-control" id="inputAddress1" placeholder="1234 Main St" name="address1">
   </div>
  
@@ -94,7 +95,7 @@
     </div>
     
     <div class="form-group col-md-4">
-      <label for="inputState">County</label>
+      <label for="input_county">County</label>
       <select id="input_county" class="form-control" name="county">
         <option selected>Choose...</option>
         <option>Antrim</option>
@@ -140,7 +141,7 @@
   
   <div class="form-row">
   <div class="form-group col-md-4">
-      <label for="inputState">Facilities of the property</label>
+      <label for="input_propertyfacilities">Facilities of the property</label>
       <select id="input_propertyfacilities" class="form-control" name="property_facilities">
         <option selected>Choose...</option>
         <option value="Gas fired central heating">Gas fired central heating</option>
@@ -153,7 +154,7 @@
     </div>
     
     <div class="form-group col-md-4">
-      <label for="inputState">Energy Performance</label>
+      <label for="input_energyperformance">Energy Performance</label>
       <select id="input_energyperformance" class="form-control" name="energy_performance">
         <option selected>Choose...</option>
         <option>A</option>
@@ -176,21 +177,29 @@
   
   <div class="form-row">
     <div class="form-group col-md-6">
-  <label for="exampleFormControlInput1">Price of the property</label>
+  <label for="exampleFormControlInput1">Price</label>
   <div class="input-group mb-3">
     
   <div class="input-group-prepend">
     <span class="input-group-text">€</span>
   </div>
-  <input type="text" class="form-control" aria-label="Euro amount (with dot and two decimal places)" name="property_price" placeholder="Enter price of the property">
+  <input type="text" class="form-control" aria-label="Euro amount (with dot and two decimal places)" name="property_price" placeholder="Enter price">
 </div>
 </div>
+<div class="form-group col-md-4">
+      <label for="input_period_price">Period</label>
+      <select id="input_period_price" class="form-control" name="period_price">
+        <option selected>Choose...</option>
+        <option>Weekly</option>
+        <option>Monthly</option>
+      </select>
+    </div>
 </div>
   
   
               
   <div class="form-group">
-    <label for="exampleFormControlFile1">Upload a picture of the property</label>
+    <label for="property_image">Upload a picture of the property</label>
     <input type="file" class="form-control-file" id="property_image" name="image">
   </div>
 

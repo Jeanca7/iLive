@@ -4,6 +4,7 @@
 
 <div class="accordion" id="accordionExample">
   {% for ad in ads %}
+  {% if ad.owner.email == session.username %}
   <div class="card">
     <div class="card-header bg-dark text-white" id="headingOne" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
          <span><img class="card-img img_size" src="{{ad.image}}" alt="Property image"></span>
@@ -11,12 +12,10 @@
          <br>
       <h5 class="mb-0">
           {{ad.address2}} {{ad.address1}} - {{ad.county}}  
-          {% if ad.owner.email == session.username %}
           <a href="{{url_for('edit_ad', ad_id=ad._id)}}" class="btn btn-primary btn-sm align-btn" role="button">Edit</a> 
           <form action="{{url_for('delete_ad', ad_id=ad._id)}}" method="POST" class="align-btn">
               <input type="submit" value="Delete" class="btn btn-danger btn-sm">
           </form>
-          {% endif %}
       </h5>
       
     </div>
@@ -25,7 +24,6 @@
       <div class="card-body">
         <span>Property description: {{ad.description}}</span><br>
         <span>Property price: € {{ad.property_price}}</span><br>
-        <span>contact emai: {{ad.owner.name}}</span><br>
         <span>contact emai: {{ad.owner.email}}</span><br>
         <span>contact phone number: {{ad.owner.phone_number}}</span>
       </div>
@@ -33,6 +31,7 @@
     </div>
     
   </div>
+{% endif %}
 {% endfor %}  
 </div>
 

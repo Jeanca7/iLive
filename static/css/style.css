@@ -15,3 +15,12 @@
 #container_register{
     margin-top: 50px;
 }
+
+.navbar-light .navbar-text {
+    color: black;
+}
+
+
+.navbar-text {
+    padding: .5rem 1rem;
+}
