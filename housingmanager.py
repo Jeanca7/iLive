@@ -105,8 +105,10 @@ def add_property():
         user = mongo.db.users.find_one({"username": session["username"]}) #I have "username" stored in session so I use it to find that specific "username" from my users collection database. By finding the "username" I get its whole information and I assign it to the user variable that I just created.
         form_values["owner"] = {
             "email": user["username"],
-            "phone_number": user["phone_number"]
+            "phone_number": user["phone_number"],
+            "name": user["name"]
         }
+         
         
         ads = mongo.db.ads  #create my ads collection
         ads.insert(form_values) #insert data from the add_property form into the ads collection

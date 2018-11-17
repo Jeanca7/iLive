@@ -22,12 +22,13 @@
 
     <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
       <div class="card-body">
-        <span>Property description: {{ad.description}}</span><br>
-        <span>Property price: € {{ad.property_price}}</span><br>
-        <span>contact emai: {{ad.owner.email}}</span><br>
+        <span>Property description: {{ad.property_description}}</span><br>
+        <span>Property price: € {{ad.property_price}}</span>
+        <span>{{ad.period_price}}</span><br>
+        <span>contact name: {{ad.owner.name}}</span><br>
+        <span>contact email: {{ad.owner.email}}</span><br>
         <span>contact phone number: {{ad.owner.phone_number}}</span>
       </div>
-      
     </div>
     
   </div>

@@ -26,7 +26,7 @@
     </div>
     </div>
     
-    
+
     
     <div class="form-row">
     <div class="form-group col-md-4">
@@ -60,15 +60,15 @@
     
   <div class="form-group">
     <div class="form-check">
-      <input class="form-check-input" type="checkbox" id="gridCheck" name="sell">
+      <input class="form-check-input" type="checkbox" id="sell_checkbox" name="sell">
       <span><label class="form-check-label" for="gridCheck">Sell</label></span>
     </div>
     <div class="form-check">
-      <input class="form-check-input" type="checkbox" id="gridCheck" name="rent">
+      <input class="form-check-input" type="checkbox" id="rent_checkbox" name="rent" onclick="showPeriod()">
       <span><label class="form-check-label" for="gridCheck">Rent</label></span>
     </div>
     <div class="form-check">
-      <input class="form-check-input" type="checkbox" id="gridCheck" name="share">
+      <input class="form-check-input" type="checkbox" id="share_checkbox" name="share" onclick="showPeriod()">
       <span><label class="form-check-label" for="gridCheck">Share</label></span>
     </div>
     </div>
@@ -186,7 +186,9 @@
   <input type="text" class="form-control" aria-label="Euro amount (with dot and two decimal places)" name="property_price" placeholder="Enter price">
 </div>
 </div>
-<div class="form-group col-md-4">
+
+
+<div class="form-group col-md-4" id="period" style="display:none">
       <label for="input_period_price">Period</label>
       <select id="input_period_price" class="form-control" name="period_price">
         <option selected>Choose...</option>
@@ -194,12 +196,11 @@
         <option>Monthly</option>
       </select>
     </div>
+
 </div>
-  
-  
               
   <div class="form-group">
-    <label for="property_image">Upload a picture of the property</label>
+    <label for="property_image">Primary property's picture</label>
     <input type="file" class="form-control-file" id="property_image" name="image">
   </div>
 
