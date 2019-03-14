@@ -4,7 +4,7 @@
    float: right;  /*move item to the right*/
 }
 
-.img_size{
+.img-size{
     width:450px;height:300px
 }
 
@@ -12,7 +12,7 @@
     color: red;
 }
 
-#container_register{
+.register-form{
     margin-top: 50px;
 }
 
@@ -24,3 +24,124 @@
 .navbar-text {
     padding: .5rem 1rem;
 }
+
+.card-img-overlay{
+    color: white;
+}
+
+.ad-content{
+    color: black;
+    margin-top: 25px;
+}
+
+.nav-logo{
+    width: 100px;
+    height: 39.063px;
+}
+
+.facilities-property{
+    margin-bottom: 0;
+    font-size: 18px;
+}
+
+.label-facilities{
+    font-size: smaller;
+}
+
+
+.bathrooms{
+    margin: 0 30px;
+}
+
+.bedrooms{
+    margin: 0 30px;
+}
+
+.image-size{
+    width:500px;
+    height: 300px;
+}
+
+.div-line{
+    border-bottom: 1px solid #C0C0C0;
+    margin-bottom: 7px;
+    width: 330px;
+}
+
+.desc-mar{
+    margin: 30px 0;
+}
+
+.feature-head{
+    display: inline;
+}
+
+.ad-address{
+    margin-top: 30px;
+    color: #696969;  
+}
+
+.ad-location{
+    margin-bottom: 20px;
+    color: #808080;
+}
+
+.car-layout{
+    margin-top: 40px;
+}
+
+.room-info{
+    color: #808080;
+}
+
+.desc-mar h6{
+    color: #696969;
+}
+
+.desc-mar span{
+    color: #808080;
+}
+
+.desc-mar h4{
+    color: #696969;
+}
+
+.num-rooms{
+    margin-bottom: 20px;
+}
+
+.ad-type{
+    margin-bottom: 0;
+}
+
+.property-card{
+    margin: 27px 0;
+}
+
+.back-image{
+    background-image: url("/static/images/apartment.jpg");
+    padding: 0;
+    height: 500px;
+}
+
+.navbar-color{
+    background-color: transparent!important;
+}
+
+.search-form{
+    position: relative;
+    top: 40%;
+    transform: translateY(-50%)
+}
+
+.item-tab{
+    margin-left: 10px;
+}
+
+@media(max-width: 991px){
+    .item-tab{
+    display: none;
+    }
+}
+
+

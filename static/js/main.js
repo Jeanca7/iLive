@@ -9,3 +9,4 @@ function showPeriod(){
     period.style.display = "none";
   }
 }
+

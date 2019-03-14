@@ -1,39 +1,45 @@
 {% extends 'layout.html' %}
 {% block content %}
 
+{% for ad in ads %}
+{% if ad.owner.email == session.username %}
 
-<div class="accordion" id="accordionExample">
-  {% for ad in ads %}
-  {% if ad.owner.email == session.username %}
-  <div class="card">
-    <div class="card-header bg-dark text-white" id="headingOne" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-         <span><img class="card-img img_size" src="{{ad.image}}" alt="Property image"></span>
-         <span></span>
-         <br>
-      <h5 class="mb-0">
-          {{ad.address2}} {{ad.address1}} - {{ad.county}}  
+
+<div class="card">
+  <div class="row">
+    <div class="col-sm">
+      <a href="{{url_for('ad_description', ad_id=ad._id)}}">
+      <img class="card-img img-size" src="{{ad.image1}}" alt="Property image">
+      <div class="card-img-overlay h-100 d-flex flex-column justify-content-end">
+        <p class="card-text"><strong>{{ad.address2}} {{ad.address1}} - {{ad.county}} <br>
+        € {{ad.property_price}} {% if ad.period_price != "Choose..." %}<span class="card-text">{{ad.period_price}}</span>{% endif %}</strong></p>
+        </div>
+      </a>
+    </div>
+    
+    
+    <div class="card-body">
+      <a href="{{url_for('ad_description', ad_id=ad._id)}}">
+    <div class="col-sm ad-content">
+      <span class="card-text">Property description: {{ad.property_description}}</span><br>
+        <span class="card-text">contact name: {{ad.owner.name}}</span><br>
+        <span class="card-text">contact email: {{ad.owner.email}}</span><br>
+        <span class="card-text">contact phone number: {{ad.owner.phone_number}}</span>
+        
           <a href="{{url_for('edit_ad', ad_id=ad._id)}}" class="btn btn-primary btn-sm align-btn" role="button">Edit</a> 
           <form action="{{url_for('delete_ad', ad_id=ad._id)}}" method="POST" class="align-btn">
               <input type="submit" value="Delete" class="btn btn-danger btn-sm">
-          </form>
-      </h5>
-      
+              </form>
+              
     </div>
-
-    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
-      <div class="card-body">
-        <span>Property description: {{ad.property_description}}</span><br>
-        <span>Property price: € {{ad.property_price}}</span>
-        <span>{{ad.period_price}}</span><br>
-        <span>contact name: {{ad.owner.name}}</span><br>
-        <span>contact email: {{ad.owner.email}}</span><br>
-        <span>contact phone number: {{ad.owner.phone_number}}</span>
-      </div>
+    </a>
     </div>
     
+    
   </div>
+</div>
+
 {% endif %}
 {% endfor %}  
-</div>
 
 {% endblock %}

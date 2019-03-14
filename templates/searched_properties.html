@@ -1,0 +1,38 @@
+{% extends 'layout.html' %}
+{% block content %}
+
+<h2>{{ads_number}} properties found for {{town_to_search}} {{purpose_to_search}} {{type_to_search}}.</h2>
+
+{% for ad in ads %}
+<div class="card">
+  <div class="row">
+    <div class="col-sm">
+      <a href="{{url_for('ad_description', ad_id=ad._id)}}">
+      <img class="card-img img-size" src="{{ad.image}}" alt="Property image">
+      <div class="card-img-overlay h-100 d-flex flex-column justify-content-end">
+        <p class="card-text"><strong>{{ad.address2}} {{ad.address1}} - {{ad.county}} <br>
+        € {{ad.property_price}} <span class="card-text">{{ad.period_price}}</span></strong></p>
+        </div>
+      </a>
+    </div>
+    
+    
+    <div class="card-body">
+      
+    <div class="col-sm ad-content">
+      <span class="card-text">Property description: {{ad.property_description}}</span><br>
+        <span class="card-text">contact name: {{ad.owner.name}}</span><br>
+        <span>Click or tap to contact advertiser:</span><br>
+        <span class="card-text">Email: <a href="mailto:{{ad.owner.email}}?Subject=I%20wish%20to%20know%20more%20about%20your%20property%20advertised%20on%20ilive.ie&body=Property's%20address:%20{{ad.address2}}%20{{ad.address1}}%20-%20{{ad.county}}" target="_top">{{ad.owner.email}}</a>
+        </span><br>
+        <span class="card-text">Phone number: <a href="tel:{{ad.owner.phone_number}}">{{ad.owner.phone_number}}</a></span>
+    </div>
+    
+    </div>
+    
+  </div>
+</div>
+
+{% endfor %} 
+
+{% endblock %}

@@ -1,6 +1,6 @@
 {% extends 'layout.html' %} 
 {% block content %}
-<h3>Add property</h3>
+<h3>Edit property</h3>
 
 <form action="{{url_for('edit_ad', ad_id=the_ad._id)}}" method="POST" enctype='multipart/form-data'>
     <div class="form-row">
@@ -59,17 +59,19 @@
     </div>
     
   
+    <div class="form-group">
     <div class="form-check">
-      <input class="form-check-input" type="checkbox" id="gridCheck" name="sell" {% if the_ad.sell %} checked {% endif %}>
-      <span><label class="form-check-label" for="gridCheck1">Sell</label></span>
+      <input class="form-check-input" type="checkbox" id="sell_checkbox" name="sell"  {% if the_ad.sell %} checked {% endif %}>
+      <span><label class="form-check-label" for="gridCheck">Sell</label></span>
     </div>
     <div class="form-check">
-      <input class="form-check-input" type="checkbox" id="gridCheck" name="rent" {% if the_ad.rent %} checked {% endif %}>
-      <span><label class="form-check-label" for="gridCheck1">Rent</label></span>
+      <input class="form-check-input" id="rent_checkbox" type="checkbox" name="rent" {% if the_ad.rent %} checked {% endif %}>
+      <span><label class="form-check-label" for="gridCheck">Rent</label></span>
     </div>
     <div class="form-check">
-      <input class="form-check-input" type="checkbox" id="gridCheck" name="share" {% if the_ad.share %} checked {% endif %}>
-      <span><label class="form-check-label" for="gridCheck1">Share</label></span>
+      <input class="form-check-input" id="share_checkbox" type="checkbox" name="share" {% if the_ad.share %} checked {% endif %}>
+      <span><label class="form-check-label" for="gridCheck">Share</label></span>
+    </div>
     </div>
   
   
@@ -82,7 +84,7 @@
   
   <div class="form-group">
     <label for="inputAddress2">Address 2</label>
-    <input type="text" class="form-control" {% if the_add %} value="{{ the_ad.address2 }}" {% endif %} id="inputAddress2" placeholder="Apartment, studio, or floor" name="address2">
+    <input type="text" class="form-control" {% if the_ad %} value="{{ the_ad.address2 }}" {% endif %} id="inputAddress2" placeholder="Apartment, studio, or floor" name="address2">
   </div>
   
   
@@ -139,19 +141,22 @@
   
   
   <div class="form-row">
-  <div class="form-group col-md-4">
-      <label for="inputState">Facilities of the property</label>
-      <select id="input_propertyfacilities" class="form-control" name="property_facilities">
-        <option selected>Choose...</option>
-        <option value="Gas fired central heating" {% if the_ad.property_facilities == "Gas fired central heating" %} selected {% endif %}>Gas fired central heating</option>
-        <option value="Parking" {% if the_ad.property_facilities == "Parking" %} selected {% endif %}>Parking</option>
-        <option value="Alarm" {% if the_ad.property_facilities == "Alarm" %} selected {% endif %}>Alarm</option>
-        <option value="Oil fired central heating" {% if the_ad.property_facilities == "Oil fired central heating" %} selected {% endif %}>Oil fired central heating</option>
-        <option value="Wired for cable television" {% if the_ad.property_facilities == "Wired for cable television" %} selected {% endif %}>Wired for cable television</option>
-        <option value="Wheelchair access" {% if the_ad.property_facilities == "Wheelchair access" %} selected {% endif %}>Wheelchair access</option>
+  <div class="form-group">
+      <p class="facilities-property">Facilities of the property</p>
+      <label for="input_propertyfacilities" class="label-facilities">Hold down the Ctrl (windows) / Command (Mac) button to select multiple options.</label>
+      <select id="input_propertyfacilities" class="form-control" name="property_facilities" multiple>
+        <option>Choose...</option>
+        <option value="Gas fired central heating" {% if "Gas fired central heating" in the_ad.property_facilities %} selected {% endif %}>Gas fired central heating</option>
+        <option value="Parking" {% if "Parking" in the_ad.property_facilities %} selected {% endif %}>Parking</option>
+        <option value="Alarm" {% if "Alarm" in the_ad.property_facilities %} selected {% endif %}>Alarm</option>
+        <option value="Oil fired central heating" {% if "Oil fired central heating" in the_ad.property_facilities %} selected {% endif %}>Oil fired central heating</option>
+        <option value="Wired for cable television" {% if "Wired for cable television" in the_ad.property_facilities %} selected {% endif %}>Wired for cable television</option>
+        <option value="Wheelchair access" {% if "Wheelchair access" in the_ad.property_facilities %} selected {% endif %}>Wheelchair access</option>
       </select>
     </div>
+    </div>
     
+    <div class="form-row">
     <div class="form-group col-md-4">
       <label for="inputState">Energy Performance</label>
       <select id="input_energyperformance" class="form-control" name="energy_performance">
@@ -167,26 +172,45 @@
     </div>
     </div>
     
-    
     <div class="form-group">
     <label for="exampleFormControlTextarea1">Description of the property</label>
-    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="property_description" {% if the_ad %} value="{{the_ad.property_description}}" {% endif %}></textarea>
+    <input class="form-control" type="text" placeholder="Edit description of the property" name="property_description" {% if the_ad.property_description %} value="{{the_ad.property_description}}" {% endif %}>
   </div>
   
+  <div class="form-row">
   <div class="form-group">
       <label for="exampleFormControlInput1">Price of the property</label>
-  <input class="form-control" type="text" placeholder="Enter price of the property" name="property_price" {% if the_ad %} value="{{the_ad.property_price}}" {% endif %}> 
+  <div class="input-group mb-3">
+    
+  <div class="input-group-prepend">
+    <span class="input-group-text">€</span>
+  </div>
+  <input type="text" class="form-control" aria-label="Euro amount (with dot and two decimal places)" name="property_price" placeholder="Enter price" {% if the_ad %} value="{{the_ad.property_price}}" {% endif %}>
+  </div> 
   </div>
   
-              
-  <div class="form-group">
-    <label for="exampleFormControlFile1">Upload a picture of the property</label>
-    <input type="file" class="form-control-file" id="property_image" name="image">
+  <div class="form-group col-md-4" id="period">
+      <label for="input_period_price">Choose period if renting or sharing.</label>
+      <select id="input_period_price" class="form-control" name="period_price">
+        <option selected>Choose...</option>
+        <option {% if the_ad.period_price == "Weekly" %} selected {% endif %}>Weekly</option>
+        <option {% if the_ad.period_price == "Monthly" %} selected {% endif %}>Monthly</option>
+      </select>
+    </div>
+  
   </div>
-
-
+  
+<div class="form-group">
+    <label for="exampleFormControlFile1">Upload images of the property</label>
+    <input type="file" class="form-control-file" id="property_image1" name="image1">
+    <input type="file" class="form-control-file" id="property_image2" name="image2">
+    <input type="file" class="form-control-file" id="property_image3" name="image3">
+    <input type="file" class="form-control-file" id="property_image4" name="image4">
+    <input type="file" class="form-control-file" id="property_image5" name="image5">
+  </div>
   <button type="submit" class="btn btn-primary">Submit</button>
 </form>
+
 
 
 {% endblock %}
