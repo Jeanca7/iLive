@@ -1,11 +1,74 @@
 {% extends 'layout.html' %} 
 {% block content %}
 
+ <nav class="navbar navbar-expand-lg navbar-light navbar-color">
+  
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+ <a class="navbar-brand" href="{{url_for('properties')}}"><img class="nav-logo" src="/static/images/logo_transparent.png"></a>
+ 
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="{{url_for('properties')}}">Home <span class="sr-only">(current)</span><span class="item-tab">|</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{{url_for('filter_ad')}}?type=buy">Buy <span class="item-tab">|</span></a>
+      </li>
+      
+      <li class="nav-item">
+        <a class="nav-link" href="{{url_for('filter_ad')}}?type=rent">Rent <span class="item-tab">|</span></a>
+      </li>
+      
+      <li class="nav-item">
+        <a class="nav-link" href="{{url_for('filter_ad')}}?type=share">Share <span class="item-tab">|</span></a>
+      </li>
+      
+        {% if session.username %}  <!--confirms if the user is authenticated-->
+        <li class="nav-item">
+        <a class="nav-link" href="{{url_for('add_property')}}">Advertise <span class="item-tab">|</span></a>
+        </li>
+        <li class="nav-item">
+        <a class="nav-link" href="{{url_for('my_ads')}}">My ads <span class="item-tab">|</span></a>
+      </li>
+      {% else %}
+      <li class="nav-item">
+      <a class="nav-link" href="{{url_for('login')}}">Advertise <span class="item-tab">|</span></a>
+      </li>
+      {% endif %}
+      </ul>
+     
+      <ul class="navbar-nav ml-auto">
+      {% if session.username %}
+       <li class="nav-item">
+        <span class="navbar-text">Hello, {{session.username}}</span>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{{url_for('logout')}}">Log out</a>
+      </li>
+      
+      {% else %}
+      
+      <li class="nav-item">
+        <a class="nav-link" id="login_id" href="{{url_for('login')}}">Login</a>
+      </li>
+      
+      <li class="nav-item">
+        <a class="nav-link" id="register_id" href="{{url_for('register')}}">Register</a>  
+      </li>
+      {% endif %}
+    </ul>
+  </div>
+</nav>
 
-<h3>Add property</h3>
 
+<div class="container">
+<div class="row justify-content-center">
+<div class="col">
+<h3 class="add-property">Add property</h3>
 
-<form action="{{url_for('add_property')}}" method="POST" enctype='multipart/form-data'>
+<form action="{{url_for('add_property')}}" method="POST" enctype='multipart/form-data' class="ad_resgis">
     <div class="form-row">
     <div class="form-group col-md-4">
       <label for="input_category">Category</label>
@@ -205,16 +268,21 @@
 </div>
               
   <div class="form-group">
-    <label for="property_image">Primary property's images</label>
-    <input type="file" class="form-control-file" id="property_image1" name="image1">
-    <input type="file" class="form-control-file" id="property_image2" name="image2">
-    <input type="file" class="form-control-file" id="property_image3" name="image3">
-    <input type="file" class="form-control-file" id="property_image4" name="image4">
-    <input type="file" class="form-control-file" id="property_image5" name="image5">
+    <label for="property_image">Primary property images</label>
+    <input type="file" class="form-control-file inp-img" id="property_image1" name="image1">
+    <input type="file" class="form-control-file inp-img" id="property_image2" name="image2">
+    <input type="file" class="form-control-file inp-img" id="property_image3" name="image3">
+    <input type="file" class="form-control-file inp-img" id="property_image4" name="image4">
+    <input type="file" class="form-control-file inp-img" id="property_image5" name="image5">
   </div>
-
+  
+  <div class="row justify-content-center">
   <button type="submit" class="btn btn-primary">Submit</button>
+  </div>
 </form>
 
+</div>
+</div>
+</div>
 
 {% endblock %}

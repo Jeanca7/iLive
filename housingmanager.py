@@ -65,15 +65,15 @@ def filter_ad():
         type = request.args['type']
         if type=="rent":
             ads=mongo.db.ads.find({"rent": True})
-            return render_template("properties.html", ads=ads)
+            return render_template("filtered_properties.html", ads=ads)
             
         if type=="share":
             ads=mongo.db.ads.find({"share": True})
-            return render_template("properties.html", ads=ads)
+            return render_template("filtered_properties.html", ads=ads)
         
         if type=="buy":
             ads=mongo.db.ads.find({"sell": True})
-            return render_template("properties.html", ads=ads)
+            return render_template("filtered_properties.html", ads=ads)
 
 @app.route("/my_ads")
 def my_ads():

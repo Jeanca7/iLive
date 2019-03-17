@@ -27,6 +27,8 @@
 
 .card-img-overlay{
     color: white;
+    padding: 20px 10px;
+    background-color: rgba(0,0,255,0.5);
 }
 
 .ad-content{
@@ -142,6 +144,55 @@
     .item-tab{
     display: none;
     }
+    
+    .card-img-top{
+    height: 270px;
+    }
+    
+    .num-bathrooms{
+    margin-left: 19px;
+    }
+    
+    .card-img-overlay{
+        top: 173px;
+        height: 97px;
+    }
 }
 
+@media(min-width: 992px){
+    .card-img-top{
+    height: 358px;
+    }
+    
+    .num-bathrooms{
+    margin-left: 23px;
+    }
+    
+    .card-img-overlay{
+        top: 270px;
+        height: 88px;
+    }
+}
 
+.card-body{
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.card a{
+    text-decoration: none;
+    color: #808080;
+}
+
+.add-property{
+    margin: 25px 0 20px 0;
+}
+
+.ad_resgis{
+    margin-bottom: 27px;
+}
+
+.inp-img{
+    margin: 10px 0;
+}

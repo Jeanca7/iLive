@@ -1,7 +1,6 @@
 {% extends 'layout.html' %}
 {% block content %}
 
-<div class="container-fluid back-image">
 
  <nav class="navbar navbar-expand-lg navbar-light navbar-color">
   
@@ -63,51 +62,6 @@
     </ul>
   </div>
 </nav>
-
-  {% with messages = get_flashed_messages() %}
-  {% if messages %}
-<div class="alert alert-success">
-<div class="messages">    
-    {% for message in messages %}
-      <strong>{{ message }}</strong>
-    {% endfor %}
-    </div>
-    </div>
-  {% endif %}
-{% endwith %}
-
-
-  <div class="container search-form">
-    <div class="row justify-content-center">
-      <div class="col-xs-7 col-md-12">
-      
-  <form class="form-inline justify-content-center" action="{{url_for('search_ad')}}" method="POST">
-  <label class="my-1 mr-2" for="city-seach">Search city/town</label>
-  <input type="text" class="form-control my-1 mr-sm-2" id="city-seach" placeholder="E.g. Dublin" name="town_to_search">
-
-  <select class="custom-select my-1 mr-sm-2" name="purpose_to_search">
-    <option selected>Buy/Share/Rent</option>
-    <option value="sell">Buy</option>
-    <option value="rent">Rent</option>
-    <option value="share">Share</option>
-  </select>
-
-  <select class="custom-select my-1 mr-sm-2" name="type_to_search">
-    <option selected>Property Type</option>
-    <option>House</option>
-    <option>Apartment</option>
-    <option>Site</option>
-  </select>
-
-  <button type="submit" class="btn btn-primary my-1">Submit</button>
-</form>
-  </div>
-    </div>
-      </div>
-  
-</div>
-
-
 
 <div class="container">
 <div class="row">
