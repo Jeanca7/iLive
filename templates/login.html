@@ -1,10 +1,72 @@
 {% extends 'layout.html' %} 
 
-
 {% block content %}
-    <div class="row">
-        <div class="col-md-8">
-            <div class="single-info page-center">
+
+ <nav class="navbar navbar-expand-lg navbar-light navbar-color">
+  
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+ <a class="navbar-brand" href="{{url_for('properties')}}"><img class="nav-logo" src="/static/images/logo_transparent.png"></a>
+ 
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="{{url_for('properties')}}">Home <span class="sr-only">(current)</span><span class="item-tab">|</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{{url_for('filter_ad')}}?type=buy">Buy <span class="item-tab">|</span></a>
+      </li>
+      
+      <li class="nav-item">
+        <a class="nav-link" href="{{url_for('filter_ad')}}?type=rent">Rent <span class="item-tab">|</span></a>
+      </li>
+      
+      <li class="nav-item">
+        <a class="nav-link" href="{{url_for('filter_ad')}}?type=share">Share <span class="item-tab">|</span></a>
+      </li>
+      
+        {% if session.username %}  <!--confirms if the user is authenticated-->
+        <li class="nav-item">
+        <a class="nav-link" href="{{url_for('add_property')}}">Advertise <span class="item-tab">|</span></a>
+        </li>
+        <li class="nav-item">
+        <a class="nav-link" href="{{url_for('my_ads')}}">My ads <span class="item-tab">|</span></a>
+      </li>
+      {% else %}
+      <li class="nav-item">
+      <a class="nav-link" href="{{url_for('login')}}">Advertise <span class="item-tab">|</span></a>
+      </li>
+      {% endif %}
+      </ul>
+     
+      <ul class="navbar-nav ml-auto">
+      {% if session.username %}
+       <li class="nav-item">
+        <span class="navbar-text">Hello, {{session.username}}</span>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{{url_for('logout')}}">Log out</a>
+      </li>
+      
+      {% else %}
+      
+      <li class="nav-item">
+        <a class="nav-link" id="login_id" href="{{url_for('login')}}">Login</a>
+      </li>
+      
+      <li class="nav-item">
+        <a class="nav-link" id="register_id" href="{{url_for('register')}}">Register</a>  
+      </li>
+      {% endif %}
+    </ul>
+  </div>
+</nav>
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="single-info page-center login-head">
                 <form method="POST" action="">
                     {{form.hidden_tag()}}
                     <fieldset class="form-group">
@@ -40,15 +102,15 @@
                         {% endif %}
                         </div>
                         
-                    <div class="form-group"> 
-                    <button type="submit" class="btn btn-primary btn-block">Log In</button>
+                    <div class="form-group login-btn"> 
+                    <button type="submit" class="btn btn-primary">Log In</button>
                     </div>
                         
                     </fieldset>
                   
                   
                     <div class="form-group">
-                    <p class="form-control form-control-label">{{ form.remember_me }} {{ form.remember_me.label }}</p>
+                    <p class="form-control form-control-label remember-btn">{{ form.remember_me }} {{ form.remember_me.label }}</p>
                     </div>
                   
                     <div class="form-group">
@@ -58,4 +120,5 @@
             </div>
         </div>
     </div>
+ </div>   
 {% endblock content %}

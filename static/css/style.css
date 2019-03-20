@@ -16,6 +16,10 @@
     margin-top: 50px;
 }
 
+.login-head{
+    margin-top: 20px;
+}
+
 .navbar-light .navbar-text {
     color: black;
 }
@@ -255,4 +259,25 @@
     .bathrooms{
         margin: 0 15px;
     }
+}
+
+.login-btn{
+    text-align: center;
+}
+
+.remember-btn{
+    width: 200px;
+}
+
+.edit-form{
+    margin-top: 17px;
+    margin-bottom: 17px;
+}
+
+.edit-head{
+    margin-top: 20px;
+}
+
+.reg-head{
+    margin-top:20px;
 }
