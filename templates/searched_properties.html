@@ -1,38 +1,101 @@
 {% extends 'layout.html' %}
 {% block content %}
 
-<h2>{{ads_number}} properties found for {{town_to_search}} {{purpose_to_search}} {{type_to_search}}.</h2>
-
-{% for ad in ads %}
-<div class="card">
-  <div class="row">
-    <div class="col-sm">
-      <a href="{{url_for('ad_description', ad_id=ad._id)}}">
-      <img class="card-img img-size" src="{{ad.image}}" alt="Property image">
-      <div class="card-img-overlay h-100 d-flex flex-column justify-content-end">
-        <p class="card-text"><strong>{{ad.address2}} {{ad.address1}} - {{ad.county}} <br>
-        € {{ad.property_price}} <span class="card-text">{{ad.period_price}}</span></strong></p>
-        </div>
-      </a>
-    </div>
-    
-    
-    <div class="card-body">
+ <nav class="navbar navbar-expand-lg navbar-light navbar-color">
+  
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+ <a class="navbar-brand" href="{{url_for('properties')}}"><img class="nav-logo" src="/static/images/logo_transparent.png"></a>
+ 
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="{{url_for('properties')}}">Home <span class="sr-only">(current)</span><span class="item-tab">|</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{{url_for('filter_ad')}}?type=buy">Buy <span class="item-tab">|</span></a>
+      </li>
       
-    <div class="col-sm ad-content">
-      <span class="card-text">Property description: {{ad.property_description}}</span><br>
-        <span class="card-text">contact name: {{ad.owner.name}}</span><br>
-        <span>Click or tap to contact advertiser:</span><br>
-        <span class="card-text">Email: <a href="mailto:{{ad.owner.email}}?Subject=I%20wish%20to%20know%20more%20about%20your%20property%20advertised%20on%20ilive.ie&body=Property's%20address:%20{{ad.address2}}%20{{ad.address1}}%20-%20{{ad.county}}" target="_top">{{ad.owner.email}}</a>
-        </span><br>
-        <span class="card-text">Phone number: <a href="tel:{{ad.owner.phone_number}}">{{ad.owner.phone_number}}</a></span>
-    </div>
-    
-    </div>
-    
+      <li class="nav-item">
+        <a class="nav-link" href="{{url_for('filter_ad')}}?type=rent">Rent <span class="item-tab">|</span></a>
+      </li>
+      
+      <li class="nav-item">
+        <a class="nav-link" href="{{url_for('filter_ad')}}?type=share">Share <span class="item-tab">|</span></a>
+      </li>
+      
+        {% if session.username %}  <!--confirms if the user is authenticated-->
+        <li class="nav-item">
+        <a class="nav-link" href="{{url_for('add_property')}}">Advertise <span class="item-tab">|</span></a>
+        </li>
+        <li class="nav-item">
+        <a class="nav-link" href="{{url_for('my_ads')}}">My ads <span class="item-tab">|</span></a>
+      </li>
+      {% else %}
+      <li class="nav-item">
+      <a class="nav-link" href="{{url_for('login')}}">Advertise <span class="item-tab">|</span></a>
+      </li>
+      {% endif %}
+      </ul>
+     
+      <ul class="navbar-nav ml-auto">
+      {% if session.username %}
+       <li class="nav-item">
+        <span class="navbar-text">Hello, {{session.username}}</span>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{{url_for('logout')}}">Log out</a>
+      </li>
+      
+      {% else %}
+      
+      <li class="nav-item">
+        <a class="nav-link" id="login_id" href="{{url_for('login')}}">Login</a>
+      </li>
+      
+      <li class="nav-item">
+        <a class="nav-link" id="register_id" href="{{url_for('register')}}">Register</a>  
+      </li>
+      {% endif %}
+    </ul>
   </div>
+</nav>
+
+<div class="container">
+  <div class="row justify-content-center search-result">
+        <h4 class="search-head">{{ads_number}} properties found for {{town_to_search}} {{purpose_to_search}} {{type_to_search}}.</h4>
+  </div>
+<div class="row">
+{% for ad in ads %} 
+<div class="col-xs-12 col-md-6">
+
+<div class="card mb-3 property-card">
+  <a href="{{url_for('ad_description', ad_id=ad._id)}}">
+  <img class="card-img-top" src="{{ad.image1}}" alt="Card image cap">
+  
+  <div class="card-img-overlay justify-content-end">
+    <p class="card-text"><strong>{{ad.address2}} {{ad.address1}} - {{ad.town_name}}, {{ad.county}} <br>
+    € {{ad.property_price}} {% if ad.period_price != "Choose..." %} <span class="card-text">{{ad.period_price}}</span> {% endif %}</strong></p>
+  </div>
+  
+  
+  <div class="card-body card-info">
+    {% if ad.sell %}<h5 class="ad-type"><i class="fas fa-home"></i> To sell</h5><br>{% endif %}
+      {% if ad.rent %}<h5 class="ad-type"><i class="fas fa-home"></i> To rent</h5><br>{% endif %}
+      {% if ad.share %}<h5 class="ad-type"><i class="fas fa-home"></i> To share</h5><br>{% endif %}
+      
+      <div class="num-rooms">
+      <span><i class="fas fa-bed"></i> {{ad.number_bedrooms}} bedrooms</span>  <span class="num-bathrooms"><i class="fas fa-bath"></i> {{ad.number_bathrooms}} bathrooms</span><br>
+      </div>
+      <span class="card-text">{{ad.property_description}}</span>
+  </div>
+  </a>
 </div>
 
+</div>
 {% endfor %} 
+  </div>
+</div>
 
 {% endblock %}

@@ -1,8 +1,70 @@
 {% extends 'layout.html' %}
 {% block content %}
 
-<div class="row justify-content-center">
-  <div class="col-xs-12">
+ <nav class="navbar navbar-expand-lg navbar-light navbar-color">
+  
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+ <a class="navbar-brand" href="{{url_for('properties')}}"><img class="nav-logo" src="/static/images/logo_transparent.png"></a>
+ 
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="{{url_for('properties')}}">Home <span class="sr-only">(current)</span><span class="item-tab">|</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{{url_for('filter_ad')}}?type=buy">Buy <span class="item-tab">|</span></a>
+      </li>
+      
+      <li class="nav-item">
+        <a class="nav-link" href="{{url_for('filter_ad')}}?type=rent">Rent <span class="item-tab">|</span></a>
+      </li>
+      
+      <li class="nav-item">
+        <a class="nav-link" href="{{url_for('filter_ad')}}?type=share">Share <span class="item-tab">|</span></a>
+      </li>
+      
+        {% if session.username %}  <!--confirms if the user is authenticated-->
+        <li class="nav-item">
+        <a class="nav-link" href="{{url_for('add_property')}}">Advertise <span class="item-tab">|</span></a>
+        </li>
+        <li class="nav-item">
+        <a class="nav-link" href="{{url_for('my_ads')}}">My ads <span class="item-tab">|</span></a>
+      </li>
+      {% else %}
+      <li class="nav-item">
+      <a class="nav-link" href="{{url_for('login')}}">Advertise <span class="item-tab">|</span></a>
+      </li>
+      {% endif %}
+      </ul>
+     
+      <ul class="navbar-nav ml-auto">
+      {% if session.username %}
+       <li class="nav-item">
+        <span class="navbar-text">Hello, {{session.username}}</span>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{{url_for('logout')}}">Log out</a>
+      </li>
+      
+      {% else %}
+      
+      <li class="nav-item">
+        <a class="nav-link" id="login_id" href="{{url_for('login')}}">Login</a>
+      </li>
+      
+      <li class="nav-item">
+        <a class="nav-link" id="register_id" href="{{url_for('register')}}">Register</a>  
+      </li>
+      {% endif %}
+    </ul>
+  </div>
+</nav>
+
+<div class="container">
+  <div class="row">
+    <div class="col"> 
     
     <div class="row justify-content-center car-layout">
       <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
@@ -16,31 +78,31 @@
           <div class="carousel-inner">
             {% if ad.image1 %}
             <div class="carousel-item active">
-              <img class="d-block image-size" src="{{ad.image1}}" alt="First slide">
+              <img class="d-block image-size img-fluid" src="{{ad.image1}}" alt="First slide">
             </div>
             {% endif %}
             
             {% if ad.image2 %}
             <div class="carousel-item">
-              <img class="d-block image-size" src="{{ad.image2}}" alt="Second slide">
+              <img class="d-block image-size img-fluid" src="{{ad.image2}}" alt="Second slide">
             </div>
             {% endif %}
             
             {% if ad.image3 %}
             <div class="carousel-item">
-              <img class="d-block image-size" src="{{ad.image3}}" alt="Third slide">
+              <img class="d-block image-size img-fluid" src="{{ad.image3}}" alt="Third slide">
             </div>
             {% endif %}
             
             {% if ad.image4 %}
             <div class="carousel-item">
-              <img class="d-block image-size" src="{{ad.image4}}" alt="Fourth slide">
+              <img class="d-block image-size img-fluid" src="{{ad.image4}}" alt="Fourth slide">
             </div>
             {% endif %}
             
             {% if ad.image5 %}
             <div class="carousel-item">
-              <img class="d-block image-size" src="{{ad.image5}}" alt="Fifth slide">
+              <img class="d-block image-size img-fluid" src="{{ad.image5}}" alt="Fifth slide">
             </div>
             {% endif %}
           </div>
@@ -67,13 +129,12 @@
       <span class="bedrooms"><i class="fas fa-bed"></i> {{ad.number_bedrooms}} bedrooms</span>  <span class="bathrooms"><i class="fas fa-bath"></i> {{ad.number_bathrooms}} bathrooms</span>
     </div>
     
-    
-    <div class="desc-mar">
+    <div class="row prop-desc">
       <h4 class="div-line">Property Description</h4>
-      <span>{{ad.property_description}}</span>
+      <p>{{ad.property_description}}</p>
     </div>
     
-    
+    <div class="row justify-content-center prop-features">
     <div class="desc-mar">
       <h4 class="div-line">Property Price</h4>
       <span>€{{ad.property_price}} {% if ad.period_price != "Choose..." %}<span>{{ad.period_price}}</span>{% endif %}</span>
@@ -105,8 +166,9 @@
       <h6 class="feature-head"><i class="fas fa-mobile-alt"></i> Phone number:</h6>
       <span><a href="tel:{{ad.owner.phone_number}}">{{ad.owner.phone_number}}</a></span><br>
     </div>
+  </div>
     
+    </div>
   </div>
 </div>
-
 {% endblock %}

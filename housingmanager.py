@@ -268,8 +268,7 @@ def edit_ad(ad_id):
         
 @app.route("/properties/<ad_id>/delete", methods=["POST"])
 def delete_ad(ad_id):
-    the_ad = mongo.db.ads.find_one({"_id": ObjectId(ad_id)})
-    mongo.db.ads.remove(the_ad)
+    mongo.db.ads.delete_one({"_id": ObjectId(ad_id)})
     return redirect(url_for("properties"))
     
 
