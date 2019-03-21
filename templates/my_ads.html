@@ -80,7 +80,7 @@
     € {{ad.property_price}} {% if ad.period_price != "Choose..." %} <span class="card-text">{{ad.period_price}}</span> {% endif %}</strong></p>
   </div>
   
-  <div class="card-body">
+  <div class="card-body card-info">
     {% if ad.sell %}<h5 class="ad-type ads-info"><i class="fas fa-home"></i> To sell</h5><br>{% endif %}
       {% if ad.rent %}<h5 class="ad-type ads-info"><i class="fas fa-home"></i> To rent</h5><br>{% endif %}
       {% if ad.share %}<h5 class="ad-type ads-info"><i class="fas fa-home"></i> To share</h5><br>{% endif %}

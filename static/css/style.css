@@ -126,7 +126,7 @@
 }
 
 .back-image{
-    background-image: url("/static/images/apartment.jpg");
+    background-image: url("/static/images/back-img.jpg");
     padding: 0;
     height: 500px;
 }
@@ -165,6 +165,10 @@
     
     .search-head{
         margin: 0 15px 0 15px;
+    }
+    
+    .prop-head{
+    font-size: large;
     }
 }
 
@@ -280,4 +284,8 @@
 
 .reg-head{
     margin-top:20px;
+}
+
+.navbar-light .navbar-nav .nav-link{
+    color: #333333;
 }

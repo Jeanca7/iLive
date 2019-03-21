@@ -93,7 +93,7 @@ def login():
                 
                 # login_user(user, form.remember_me.data)
                 session["username"] = request.form["email"]  #I create my session 
-                flash("You were successfully logged in!")
+                flash("You have successfully logged in!")
                 return redirect(url_for('properties'))  
                 
         error='Invalid username or password.'
@@ -118,8 +118,8 @@ def register():
             users.insert({"username": request.form["email"], "password": hashpass, "name": request.form["username"], "phone_number": request.form["phone_number"]}) #we instert the username and password into the user document
             session["username"] = request.form["email"]   #create my section so when we go to the line 18 (if "username" in session:) makes sense!!! 
             
-            
-            return redirect(url_for("add_property", existing_user=existing_user)) #MIGHT CHANGE THIS URL_FOR!!! as the "def home()" only returns that the username has logged in
+            flash("You have successfully registered!")
+            return redirect(url_for("add_property")) 
         
         return "This username already exits."
     
@@ -171,6 +171,7 @@ def add_property():
 
         ads = mongo.db.ads  #create my ads collection
         ads.insert(form_values) #insert data from the add_property form into the ads collection
+        flash("You have successfully added your property!")
         return redirect(url_for("properties"))
     else:
         return render_template("add_property.html")    
@@ -258,6 +259,7 @@ def edit_ad(ad_id):
         form_values["property_facilities"]=facilities #insert facilities list into the doccument 
         
         mongo.db.ads.update({"_id":ObjectId(ad_id)}, form_values) #I target the ad_id and update it with the form_values
+        flash("You have successfully edited your ad!")
         return redirect(url_for("properties"))
     
     else:
@@ -269,6 +271,7 @@ def edit_ad(ad_id):
 @app.route("/properties/<ad_id>/delete", methods=["POST"])
 def delete_ad(ad_id):
     mongo.db.ads.delete_one({"_id": ObjectId(ad_id)})
+    flash("You have successfully deleted your ad!")
     return redirect(url_for("properties"))
     
 
