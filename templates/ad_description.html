@@ -152,7 +152,7 @@
       <h6 class="feature-head">Property Category:</h6>
       <span>{{ad.category_name}}</span><br>
       <h6 class="feature-head">Property Type:</h6>
-      <span>{{ad.property_type}}</span><br>
+      <span>{{ad.property_type}} {% if ad.property_type == "House" %}<i class="fas fa-home"></i>{% elif ad.property_type == "Apartment" %}<i class="far fa-building"></i>{% else %}<i class="fas fa-tree"></i>{% endif %}</span><br>
       <h6 class="feature-head">Building Energy Rating:</h6>
       <span>{{ad.energy_performance}}</span><br>
     </div>
