@@ -52,12 +52,6 @@ patch_request_class(app)  #set maximum file size, default is 16MB
 
 mongo = PyMongo(app)
 
-# @app.route("/")
-# def home():
-#     if "username" in session:
-#         return "You are logged in as " + session["username"]
-#     return render_template("login.html")
-    
 
 @app.route("/ad_type")
 def filter_ad():
