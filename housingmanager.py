@@ -11,8 +11,6 @@ from flask_dropzone import Dropzone
 from flask_uploads import UploadSet, configure_uploads, IMAGES, patch_request_class
 from flask_mail import Mail, Message
 
-import os 
-
 
 app = Flask(__name__)
 
