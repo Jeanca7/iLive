@@ -126,7 +126,7 @@
       </div>
     
     <div class="row justify-content-center room-info">
-      <span class="bedrooms"><i class="fas fa-bed"></i> {{ad.number_bedrooms}} bedrooms</span>  <span class="bathrooms"><i class="fas fa-bath"></i> {{ad.number_bathrooms}} bathrooms</span>
+      <span class="bedrooms"><i class="fas fa-bed"></i> {% if ad.number_bedrooms != "Choose..." %} {{ad.number_bedrooms}} {% else %} n/a {% endif %} bedrooms</span>  <span class="bathrooms"><i class="fas fa-bath"></i> {% if ad.number_bathrooms != "Choose..." %} {{ad.number_bathrooms}} {% else %} n/a {% endif %} bathrooms</span>
     </div>
     
     <div class="row prop-desc">
@@ -154,7 +154,7 @@
       <h6 class="feature-head">Property Type:</h6>
       <span>{{ad.property_type}} {% if ad.property_type == "House" %}<i class="fas fa-home"></i>{% elif ad.property_type == "Apartment" %}<i class="far fa-building"></i>{% else %}<i class="fas fa-tree"></i>{% endif %}</span><br>
       <h6 class="feature-head">Building Energy Rating:</h6>
-      <span>{{ad.energy_performance}}</span><br>
+      <span>{% if ad.energy_performance != "Choose..." %}{{ad.energy_performance}}{% else %}n/a{% endif %}</span><br>
     </div>
     
     <div class="desc-mar">

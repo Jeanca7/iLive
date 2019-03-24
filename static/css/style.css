@@ -200,6 +200,10 @@
         top: 270px;
         height: 88px;
     }
+    
+    .search-sign{
+        margin-left: 189px;
+    }
 }
 
 .card-body{
@@ -308,4 +312,8 @@
 .container-fluid{
     padding-left: 0;
     padding-right: 0;
+}
+
+.search-sign{
+    color: #262626;
 }

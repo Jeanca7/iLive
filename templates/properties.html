@@ -103,8 +103,9 @@
 </form>
   </div>
     </div>
+    <span class="search-sign">Complete every field to obtain more accurate results.</span>
+    
       </div>
-  
 </div>
 
 
@@ -132,7 +133,7 @@
       </h5><br>
 
       <div class="num-rooms">
-      <span><i class="fas fa-bed"></i> {{ad.number_bedrooms}} bedrooms</span>  <span class="num-bathrooms"><i class="fas fa-bath"></i> {{ad.number_bathrooms}} bathrooms</span>
+      <span><i class="fas fa-bed"></i> {% if ad.number_bedrooms != "Choose..." %} {{ad.number_bedrooms}} {% else %} n/a {% endif %} bedrooms</span>  <span class="num-bathrooms"><i class="fas fa-bath"></i> {% if ad.number_bathrooms != "Choose..." %} {{ad.number_bathrooms}} {% else %} n/a {% endif %} bathrooms</span>
       </div>
       <span class="card-text">{{ad.property_description}}</span>
   </div>
