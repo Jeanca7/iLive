@@ -80,9 +80,10 @@
   
   
   <div class="card-body card-info">
-    {% if ad.sell %}<h5 class="ad-type"><i class="fas fa-home"></i> To sell</h5><br>{% endif %}
-      {% if ad.rent %}<h5 class="ad-type"><i class="fas fa-home"></i> To rent</h5><br>{% endif %}
-      {% if ad.share %}<h5 class="ad-type"><i class="fas fa-home"></i> To share</h5><br>{% endif %}
+      <h5 class="ad-type">
+      {% if ad.property_type == "House" %}<i class="fas fa-home"></i>{% elif ad.property_type == "Apartment" %}<i class="far fa-building"></i>{% else %}<i class="fas fa-tree"></i>{% endif %}
+      {% if ad.sell %}For sell{% elif ad.rent %}To rent{% elif ad.share %}To share{% endif %}
+      </h5><br>
       
       <div class="num-rooms">
       <span><i class="fas fa-bed"></i> {{ad.number_bedrooms}} bedrooms</span>  <span class="num-bathrooms"><i class="fas fa-bath"></i> {{ad.number_bathrooms}} bathrooms</span><br>
