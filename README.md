@@ -6,7 +6,7 @@ An online marketplaces site dedicated to provide sellers, buyers and tenants an 
 Due to the insufficient supply of housing, we are constantly looking for accomodation and this is not an easy task. For this reason, I decided to create a website to make the property search easier with a focus on accessible information on properties and advertisers alike.  
 
 On ilive the ads are split into properties for sale, rent and share. Additionally, There is a search form on the home page to facilitate the property search according to the user needs. When users enter the name of the city, select the type of property (house, apartment or site) and the motive for the search (buy, rent or share), 
-a string of text is displayed on top of the page indicating the number of ads currently advertised with the values entered and selected in the search form.  
+a list of matching properties are displayed together with a string of text on top of the page indicating the number of ads currently advertised with the values entered and selected in the search form.  
 Furthermore, users can view all the properties currently being advertised on the home page
 and access the full details of the properties by clicking on them. Once the advertised property has been clicked, the user can see multiple images of the property together with the description of same and details such as full address, number of bathrooms, bedrooms, property type, price, building energy rating, facilities and contact details(owner's name, email and phone number).  
 Users can contact the advertiser via email by clicking on the link provided or make a phone call by clicking on the number provided as a link.  
@@ -15,9 +15,10 @@ To advertise properties, the user must create an account by entering their names
 When the ad has been edited or deleted the user is redirected to the home page and a message will appear under the navbar confirming the removal or edition. The messages feature is also available when a user registers and logs in. 
 
 ## Mockups
-* [desktop:laptop screen mockups - ChoppingBoard.pdf](https://github.com/Jeanca7/choppingboard.ie/files/2911743/desktop.laptop.screen.mockups.-.ChoppingBoard.pdf)  
-* [ipad screen mockups - ChoppingBoard.pdf](https://github.com/Jeanca7/choppingboard.ie/files/2911746/ipad.screen.mockups.-.ChoppingBoard.pdf)  
-* [mobile phone screen mockups - ChoppingBoard.pdf](https://github.com/Jeanca7/choppingboard.ie/files/2911748/mobile.phone.screen.mockups.-.ChoppingBoard.pdf)
+* [ilive_tablet_mockups.pdf](https://github.com/Jeanca7/iLive/files/3009348/ilive_tablet_mockups.pdf)
+* [ilive_desktop_mockups.pdf](https://github.com/Jeanca7/iLive/files/3009344/ilive_desktop_mockups.pdf)
+* [mobile phone screen mockups - ChoppingBoard.pdf](https://github.com/Jeanca7/choppingboard.ie/files/2911748/mobile.phone.screen.mockups.-.ChoppingBoard.pdf)  
+* [additional wireframes.pdf](https://github.com/Jeanca7/iLive/files/3009352/additional.wireframes.pdf)
 
 ## Code style
 I have used standard code style.
@@ -87,7 +88,7 @@ Alternatively, you can use the username:guest@gmail.com and password:guest777
 ilive: (http://jeansedo-ilive.herokuapp.com/)
 
 ## Credits
- MongoDB documentation (https://docs.mongodb.com/)
+ MongoDB documentation (https://docs.mongodb.com/)  
  Flask doccumentation (http://flask.pocoo.org/docs/1.0/)  
  Appreciation for Flask authentication. Book Flask Web Development, Developing web applications with Python By Miguel Grinberg (Publisher:O'Reilly, 2018)
  
