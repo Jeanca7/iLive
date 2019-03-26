@@ -7,6 +7,7 @@ Due to the insufficient supply of housing, we are constantly looking for accomod
 
 On ilive the ads are split into properties for sale, rent and share. Additionally, There is a search form on the home page to facilitate the property search according to the user needs. When users enter the name of the city, select the type of property (house, apartment or site) and the motive for the search (buy, rent or share), 
 a list of matching properties are displayed together with a string of text on top of the page indicating the number of ads currently advertised with the values entered and selected in the search form.  
+
 Furthermore, users can view all the properties currently being advertised on the home page
 and access the full details of the properties by clicking on them. Once the advertised property has been clicked, the user can see multiple images of the property together with the description of same and details such as full address, number of bathrooms, bedrooms, property type, price, building energy rating, facilities and contact details(owner's name, email and phone number).  
 Users can contact the advertiser via email by clicking on the link provided or make a phone call by clicking on the number provided as a link.  
