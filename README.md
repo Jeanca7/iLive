@@ -59,7 +59,7 @@ Furthermore, You might need to create an account on mLab to store your data as i
  
 ## Deployment
 ilive is hosted on Heroku.  
-(http://jeansedo-ilive.herokuapp.com/)
+(https://jeansedo-ilive.herokuapp.com/)
 
 
 ## Tests
@@ -86,7 +86,7 @@ To ensure features of the site work effectively and on different operating syste
 ## How to use?
 You can register with your email, names and phone number.  
 Alternatively, you can use the username:guest@gmail.com and password:guest777  
-ilive: (http://jeansedo-ilive.herokuapp.com/)
+ilive: (https://jeansedo-ilive.herokuapp.com/)
 
 ## Credits
  MongoDB documentation (https://docs.mongodb.com/)  
