@@ -1,110 +1,97 @@
-![img_0050](https://user-images.githubusercontent.com/43143675/53450907-62556a80-3a15-11e9-8d53-0ad96dc523bd.jpg)
+![IMG_1195](https://user-images.githubusercontent.com/43143675/54995861-b2e1c880-4fbf-11e9-854b-57db2f46ff75.jpg)
 ## ilive
 An online marketplaces site dedicated to provide sellers, buyers and tenants an outstanding experince through an easy-to-use and intuitive functionality. 
 
 ## UX
 Due to the insufficient supply of housing, we are constantly looking for accomodation and this is not an easy task. For this reason, I decided to create a website to make the property search easier with a focus on accessible information on properties and advertisers alike.  
 
-On ilive the ads are split into properties for sale, rent and share. Also, users can view all the properties currently being advertised on the home page
+On ilive the ads are split into properties for sale, rent and share. Additionally, There is a search form on the home page to facilitate the property search according to the user needs. When users enter the name of the city, select the type of property (house, apartment or site) and the motive for the search (buy, rent or share), 
+a string of text is displayed on top of the page indicating the number of ads currently advertised with the values entered and selected in the search form.  
+Furthermore, users can view all the properties currently being advertised on the home page
 and access the full details of the properties by clicking on them. Once the advertised property has been clicked, the user can see multiple images of the property together with the description of same and details such as full address, number of bathrooms, bedrooms, property type, price, building energy rating, facilities and contact details(owner's name, email and phone number).  
-Users can contact the advertiser via email by clicking in the link provided or make a phone call by clicking on the number provided as a link.  
+Users can contact the advertiser via email by clicking on the link provided or make a phone call by clicking on the number provided as a link.  
 
 To advertise properties, the user must create an account by entering their names, email, phone number and password. Registered users can access their advertised properties on the My Properties section where they can be found listed, and users can edit them and delete them.
-
-
-## Build status
-Travis has been used for building status of continus integration.
-
-[![Build Status](https://travis-ci.org/Jeanca7/choppingboard.ie.svg?branch=master)](https://travis-ci.org/Jeanca7/choppingboard.ie)
-
-## Code style
-I have used standard code style.
-
-## Tech/framework used
-<b>Built with</b>
-* Django
-* Bootstrap 4
-* jQuery
-* Ajax
-* Python
-* JavaScript
-* CSS3
-* HTML5
-* PostgreSQL database
-* Stripe
-* Heroku  
-
-* Adobe Comp (To create mockups)
-## Features
-Everyone can view recipes including their videos and pictures. However, in order to interact with ChoppingBoard and its users, viewers must register.
-The content on ChoppingBoard is created by its users only.
-
-Specific features are as follows:
-1. Authentication system (registration, login, logout, password change and password reset)
-2. Social authentication (register and login using Facebook, Linkedin and Google+ (please notice that Google+ will come to an end in April 2019)) 
-3. Custom user profiles (Users can change their profile information including names, email, avatar, background image, etc.)
-4. Generated images tumbnails (using sorl-thumbnail)
-5. Pagination (using ajax)
-5. follower system (using ajax)
-6. like system (using ajax)
-7. Views 
-8. Users can email cooks from their profile. 
-
-
-## Installation
-
-You might need to create an account on AWS (Amazon  and generate secret keys to access the static files. You can find information here: (https://docs.aws.amazon.com/general/latest/gr/aws-sec-cred-types.html#access-keys-and-secret-access-keys)   
-Additionally, you need to install an SQL databse system to store information. ChoppingBoard uses PostgreSQL.  
-ChoppingBoard utilises Stripe for payments, you can create an account here: (https://stripe.com/ie)
-
-To run this project you will need to clone this repository and enter the following command in your console.
-```
-$ sudo pip3 -r install requirements.txt
-```
-
-## Deployment
-ShoppingBoard is hosted on Heroku and static files are stored on AWS.  
-(https://jeancasedo-choppingboard.herokuapp.com/)
+When the ad has been edited or deleted the user is redirected to the home page and a message will appear under the navbar confirming the removal or edition. The messages feature is also available when a user registers and logs in. 
 
 ## Mockups
 * [desktop:laptop screen mockups - ChoppingBoard.pdf](https://github.com/Jeanca7/choppingboard.ie/files/2911743/desktop.laptop.screen.mockups.-.ChoppingBoard.pdf)  
 * [ipad screen mockups - ChoppingBoard.pdf](https://github.com/Jeanca7/choppingboard.ie/files/2911746/ipad.screen.mockups.-.ChoppingBoard.pdf)  
 * [mobile phone screen mockups - ChoppingBoard.pdf](https://github.com/Jeanca7/choppingboard.ie/files/2911748/mobile.phone.screen.mockups.-.ChoppingBoard.pdf)
 
+## Code style
+I have used standard code style.
+
+## Tech/framework used
+<b>Built with</b>
+* Flask
+* Bootstrap 4
+* Python
+* JavaScript
+* CSS3
+* HTML5
+* Jinja2
+* MongoDB NoSQL database
+* Heroku  
+* Adobe Comp (To create mockups)  
+
+## Features
+Every user can see all the properties being advertised and their content including images and contact details. If a user wants to advertise must register to access the property form. The content on ilive is created by the registered users only.
+
+Specific features are as follows:
+1. Authentication system (registration, login and logout) 
+2. Form validation
+2. Creation of property advertising
+3. Edition of property
+4. Deletion of property
+5. Search form to filter properties (use of regular expressions($regex) and the find method in MongoDB database) 
+6. Property description(carousel of images and property features)
+
+## Installation
+To run this project you will need to clone this repository and enter the following command in your console.
+```
+$ sudo pip3 -r install requirements.txt
+```
+Please note that I used basic Unix in the terminal so the commands may differ from your software operating system.  
+Furthermore, You might need to create an account on mLab to store your data as it is a database server for MongoDB; you can find information here: (https://mlab.com/welcome/)  
+ 
+## Deployment
+ilive is hosted on Heroku.  
+(http://jeansedo-ilive.herokuapp.com/)
+
+
 ## Tests
-Testing was executed manually to ensure the website's responsiveness, funcionality and defensiveness work correnctly.   
+Testing was executed manually to ensure the website's responsiveness, funcionality and defensiveness work correctly.   
 
 * Responsiveness:
 The site was tested on a 23.8" monitor and 13.3" MacBook Air, iphone X and ipad Pro. It was also tested on Firefox, Chrome and Safari.
 
 * Functionality:
 To ensure features of the site work effectively and on different operating systems.
-    * registration
-    * Login/logout
-    * social authentication(on Facebook, Linkedin and Google+) Social Uthentication works on deployed website only.
-    * Uploading files as images and videos.
+    * Registration.
+    * Login/logout.
+    * Uploading files such as images.
+    * Creation of property ads and correctly saved in the database.
+    * Edition and deletion of ads from the database.
+    * Successful search by using regular expressions together with case insensitivity.
+    * Query doccuments from collections by using a logical AND conjuction for the search form. 
 
 * Deffensiveness:
-    * Only users can login and post a recipe.
-    * An unregistered person cannot follow a user.
-    * An unregistered person cannot give a like to recipes.
-    * Only users can delete and edit their own recipe and not someone else's.
-    * Only users can edit their own profile and not someone else's.
-    * Users' profiles can only be viewed by other users.
+    * Only registered users can login.
+    * An unregistered person cannot advertise a property.
+    * Only registered users can delete and edit their own properties and not someone else's.
 
 ## How to use?
-You can register with your email or login with a social media account(Facebook, Linkedin or Google+).  
-Alternatively, you can use the username:guest and password:guest777  
-ChoppingBoard: (https://jeancasedo-choppingboard.herokuapp.com/)
+You can register with your email, names and phone number.  
+Alternatively, you can use the username:guest@gmail.com and password:guest777  
+ilive: (http://jeansedo-ilive.herokuapp.com/)
 
 ## Credits
- Django documentation (https://docs.djangoproject.com/en/2.1/)  
- Appreciation for Django authentication. Simple is better than complex (https://simpleisbetterthancomplex.com/)  
- Book Django 2 by Example By Antonio Mele (Publisher:Packt, 2018)
-
+ MongoDB documentation (https://docs.mongodb.com/)
+ Flask doccumentation (http://flask.pocoo.org/docs/1.0/)  
+ Appreciation for Flask authentication. Book Flask Web Development, Developing web applications with Python By Miguel Grinberg (Publisher:O'Reilly, 2018)
+ 
 ### Media
-* Videos were obtained from Pexels.com
 * Images obtained from Pexels.com and Google.
 * Icons from Fontawesome.com
-* Fonts from GoogleFonts.
     
