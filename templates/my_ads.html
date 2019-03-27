@@ -81,7 +81,7 @@
   </div>
   
   <div class="card-body card-info">
-      <h5 class="ad-type">
+      <h5 class="ad-type ads-info">
       {% if ad.property_type == "House" %}<i class="fas fa-home"></i>{% elif ad.property_type == "Apartment" %}<i class="far fa-building"></i>{% else %}<i class="fas fa-tree"></i>{% endif %}
       {% if ad.sell %}For sell{% elif ad.rent %}To rent{% elif ad.share %}To share{% endif %}
       </h5><br>
