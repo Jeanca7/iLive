@@ -18,7 +18,7 @@ When the ad has been edited or deleted the user is redirected to the home page a
 ## Mockups
 * [ilive_tablet_mockups.pdf](https://github.com/Jeanca7/iLive/files/3009348/ilive_tablet_mockups.pdf)
 * [ilive_desktop_mockups.pdf](https://github.com/Jeanca7/iLive/files/3009344/ilive_desktop_mockups.pdf)
-* [mobile phone screen mockups - ChoppingBoard.pdf](https://github.com/Jeanca7/choppingboard.ie/files/2911748/mobile.phone.screen.mockups.-.ChoppingBoard.pdf)  
+* [ilive_phone_mockups.pdf](https://github.com/Jeanca7/iLive/files/3073460/ilive_phone_mockups.pdf)  
 * [additional wireframes.pdf](https://github.com/Jeanca7/iLive/files/3009352/additional.wireframes.pdf)
 
 ## Code style
